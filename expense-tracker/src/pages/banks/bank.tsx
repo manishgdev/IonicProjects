@@ -16,12 +16,14 @@ export interface IBankProps {
 
 export const Bank: React.FC<IBankProps> = (props:IBankProps) => {
   return (
-    <IonCard color={props.isExpenseAccount? "success": "tertiary"}>
+    <IonCard>
       <IonCardHeader>
         <IonCardTitle>{props.accountName}- xxx{props.lastDigits}</IonCardTitle>
         <IonCardSubtitle></IonCardSubtitle>
       </IonCardHeader>
-      <IonCardContent>{props.balance}</IonCardContent>
+      <IonCardContent>
+        {props.balance}
+      </IonCardContent>
       <IonButton fill="clear">View</IonButton>
     </IonCard>
   );

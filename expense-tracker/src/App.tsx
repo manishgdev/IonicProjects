@@ -35,6 +35,7 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import { Banks } from "./pages/banks/banks";
 import { CreditCards } from "./pages/credit-cards/creditcards";
+import { BankAdd } from "./pages/banks/bank-add";
 
 setupIonicReact();
 
@@ -54,6 +55,9 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/banks">
             <Banks />
+          </Route>
+          <Route exact path="/add-bank">
+            <BankAdd />
           </Route>
           <Route exact path="/credit-cards">
             <CreditCards />

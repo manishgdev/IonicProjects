@@ -23,7 +23,7 @@ import {
           <IonCardSubtitle></IonCardSubtitle>
         </IonCardHeader>
         <IonCardContent>
-            {props.totalDue} / {props.availableCredit} <br/>
+            <>&#8377;</> {props.totalDue} / <>&#8377;</> {props.availableCredit} <br/>
             {"Due Date : " + props.dueDate}
         </IonCardContent>
         <IonButton fill="clear">View</IonButton>
