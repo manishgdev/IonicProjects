@@ -35,7 +35,7 @@ export const BankAdd: React.FC = () => {
       .number()
       .required("Please enter starting balance")
       .typeError("Balance should be a number"),
-      isExpenseAccount: yup.bool().default(false)
+    isExpenseAccount: yup.bool().default(false)
   });
 
   const {
@@ -46,7 +46,6 @@ export const BankAdd: React.FC = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(addBankSchema),
-    defaultValues: { isExpenseAccount: false}
   });
 
   // const { register, handleSubmit, setValue, control, formState: {errors} } = useForm<IBankProps>();
@@ -78,7 +77,12 @@ export const BankAdd: React.FC = () => {
         <form className="ion-padding" onSubmit={handleSubmit(addBank)}>
           <IonItem>
             <IonLabel position="floating">Bank Name</IonLabel>
-            <IonInput {...register("accountName")} />
+            <Controller
+              name="accountName"
+              control={control}
+              defaultValue=""
+              render={({ field }) => <IonInput {...field} />}
+            />
           </IonItem>
           {errors && errors.accountName && (
             <IonText color="danger" className="ion-padding-start">
@@ -87,7 +91,12 @@ export const BankAdd: React.FC = () => {
           )}
           <IonItem>
             <IonLabel position="floating">Last 4 Digits</IonLabel>
-            <IonInput {...register("lastDigits")} />
+            <Controller
+              name="lastDigits"
+              control={control}
+              defaultValue=""
+              render={({ field }) => <IonInput {...field} />}
+            />
           </IonItem>
           {errors && errors.lastDigits && (
             <IonText color="danger" className="ion-padding-start">
@@ -96,20 +105,25 @@ export const BankAdd: React.FC = () => {
           )}
           <IonItem>
             <IonLabel position="floating">Current Balance</IonLabel>
-            <IonInput type="number" {...register("balance")} />
+            <Controller
+              name="balance"
+              control={control}
+              render={({ field }) => <IonInput type="number" {...field} />}
+            />
           </IonItem>
           {errors && errors.balance && (
             <IonText color="danger" className="ion-padding-start">
               <small>{errors.balance?.message}</small>
             </IonText>
           )}
-
           <IonItem lines="none">
-          <IonCheckbox 
-              {...register("isExpenseAccount")} 
-              onIonChange={(e) => setValue("isExpenseAccount", e.target.checked)}
-          >
-              <IonLabel>Expense Account</IonLabel> </IonCheckbox>
+            <Controller
+              name="isExpenseAccount"
+              control={control}
+              defaultValue={false}
+              render={({ field }) => <IonCheckbox {...field} />}
+            />
+            <IonLabel>Expense Account</IonLabel>
           </IonItem>
 
           <IonButton className="ion-margin-top" type="submit" expand="block">

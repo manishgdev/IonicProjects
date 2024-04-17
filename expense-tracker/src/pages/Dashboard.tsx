@@ -25,6 +25,10 @@ const Dashboard: React.FC = () => {
     router.push('/banks');
   }
 
+  const openPage = (path:string) => {
+    router.push(`/${path}`);
+  }
+
   const openCreditCardsPage = () => {
     router.push('/credit-cards');
   }
@@ -50,8 +54,8 @@ const Dashboard: React.FC = () => {
                   <IonCardTitle>Bank Accounts</IonCardTitle>
                 </IonCardHeader>
                 <IonCardContent>5</IonCardContent>
-                <IonButton onClick={openBanksPage} fill="clear">View</IonButton>
-                <IonButton fill="clear">Add</IonButton>
+                <IonButton onClick={() => openPage("banks")} fill="clear">View</IonButton>
+                <IonButton onClick={() => openPage("add-bank")} fill="clear">Add</IonButton>
               </IonCard>
             </IonCol>
             <IonCol>
@@ -60,7 +64,7 @@ const Dashboard: React.FC = () => {
                   <IonCardTitle>Credit Cards</IonCardTitle>
                 </IonCardHeader>
                 <IonCardContent>5</IonCardContent>
-                <IonButton onClick={openCreditCardsPage} fill="clear">View</IonButton>
+                <IonButton onClick={() => openPage("credit-cards")} fill="clear">View</IonButton>
                 <IonButton fill="clear">Add</IonButton>
               </IonCard>
             </IonCol>
